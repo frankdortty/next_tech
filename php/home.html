@@ -1,0 +1,472 @@
+<!-- <?php
+session_start();
+
+include("../config.php");
+if (!isset($_SESSION['valid'])) {
+    header("Location: index.php");
+    exit(); // Make sure to stop executing the script after the redirect
+}
+
+$id = mysqli_real_escape_string($con, $_SESSION['id']);
+$query = mysqli_query($con, "SELECT * FROM users WHERE Id='$id'");
+
+if (!$query) {
+    die("Error: " . mysqli_error($con));
+}
+
+while ($result = mysqli_fetch_assoc($query)) {
+    $res_Email = $result['email'];
+    $res_id = $result['id'];
+}
+?> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextTech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../img/python-5.svg" type="image/x-icon">
+
+</head>
+<body>
+    <main class="main">
+        <!-- header -->
+        <header class="header">
+            <!-- top header -->
+            <div class="topheader">
+                <div class="num">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="cursor:pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone mr-10"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                   <p> <a href="tel:+2348149570768"> +2348149570768 </a></p>
+                </div>
+                <div class="mail">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"  
+                    style="cursor:pointer" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" class="feather feather-mail mr-10">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                   <p> <a href="mailto:nexttech@techsupport.com">nextech@techsupport.com</a> </p> 
+                </div>
+                <div class="searchBar">
+                    <input type="text" placeholder="search" id="search" name="search">
+                    <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search mr-10"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                </div>
+                <!-- <div class="out">
+                    <p><a href='../edit.php?Id=<?php echo urlencode($id); ?>'><?php echo $_SESSION['username']; ?></a></p>
+                        <a href="logout.php">LogOut</a>
+                </div>   -->
+                
+            </div>
+            <!-- bottom header -->
+            <div class="bottomheader">
+                <nav class="navigation">
+                    
+                    <input type="checkbox" name="" id="menubtn" class="menubtn"> 
+                    <label for="menubtn" class="menuicon">
+                        <span class="navicon"></span>
+                    </label>
+
+                    <a href="home.php" class="logo">
+                    <span id="Nex">Nex</span><span id="Tec">Tech</span>
+                    </a>
+                    
+                    <ul class="mainmenu">
+                        <li><a href="home.php">  Home  </a></li>
+                        <li><a href="#"> Courses </a></li>
+                        <li><a href="do.php"> What We do</a></li>
+                        <li><a href="#"> Portfolio</a></li>
+                        <li><a href="contact.php"> Contact</a></li>
+                    </ul>
+
+                </nav>
+            </div>
+        </header>
+        <div class="maibody">
+            <!-- first section -->
+            <div class="firstsection">
+                <div class="slideshow">
+                    <div class="ani">              
+                            <img class="image_one" src="..\img\Websites-one.png" alt="websiteOne"> 
+                            <p>
+                            We build well desigined websites
+                            <span>Our approch is to use use cutting edge tools</span>
+                            <button>
+                                <a href="#">Visit</a>
+                            </button>
+                            </p>                        
+                    </div> 
+                    <div class="ani">
+                        <img class="image_one" src="..\img\student-one.jpg" alt="studentone">
+                        <p>
+                            NexTech is a community aimed at educating, building and networking,
+                            crative minds for a better future
+                            <button>
+                                <a href="do.php">Visit</a>
+                            </button>
+                        </p>   
+                    </div>
+                    <div class="ani">
+                        <img class="image_one" src="../img/solutions-one.jpg" alt="solutionOne">
+                        <p>
+                            We create Solutions that makes a difference world wide
+                        </p>   
+                    </div>
+                    <div class="ani">
+                        <img class="image_one" src="../img/techgaint-one.jpg" alt="tech">
+                        <p>
+                        Our Goal is to bring out the tech giant within you
+                        </p>    
+                    </div>
+                </div>
+            </div>
+            <!-- secound section -->
+            <div class="secoundsection">
+                <div class="courses">
+                    <div class="Boxes">
+                        <div class="box">
+                            <div class="box-img">
+                                <img src="../img/teacher.svg" alt="">
+                            </div>
+                            <div class="text">
+                                <p class="box-intro">
+                                    Highly Trained Staff
+                                </p>
+                                <p class="box-desc">
+                                   Get Your Project done by the bests in the industry
+                                </p>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-img">
+                                <img src="../img/student.svg" alt="">
+                            </div>
+                            <div class="text">
+                                <p class="box-intro">
+                                    Satisfied Student
+                                </p>
+                                <p class="box-desc">
+                                    Enrolled in our courses and improved their skills.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-img">
+                                <img src="../img/course.svg" alt="">
+                            </div>
+                            <div class="text">
+                                <p class="box-intro">
+                                    Interactive Classes
+                                </p>
+                                <p class="box-desc">
+                                    Improve your skills using live knowledge flow.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="box-img">
+                                <img src="../img/video.svg" alt="">
+                            </div>
+                            <div class="text">
+                                <p class="box-intro">
+                                    High Performace Project
+                                </p>
+                                <p class="box-desc">
+                                    We brimg your imagiation to life
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- third section -->
+            <div class="thirdsection">
+                <div class="whatWedo">
+                    <div class="hearder-what">
+                        <div class="what-text">
+                            <p>What We Do</p>
+                        </div>
+                        <div class="what-link">
+                            <a href="do.php"><button>View All</button></a>
+                        </div>
+                    </div>
+                    <div class="what-body">
+                        <div class="boxes-what">
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/software development.jpg" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                        Flutter development for mobile application
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/react.avif" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                        Front End development with React js
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/dataann.avif" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                       Data Analytics With R programin
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/Ai.avif" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                        Artificial Inteligence with Python
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/django.avif" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                        Flull Stact Development with Django
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="three">
+                <div class="centerd">
+                    <div class="threeheader">
+                        <p>A Little About NexTech</p>
+                    </div>
+                    <div class="threebody">
+                        <div class="about">
+                            NexTech is a full service digital agency based in Lagos,
+                            Nigeria. We have been professionally developing and providing IT 
+                            solutions for various enterprises, multinationals and non-profit 
+                            organisations. We develop and execute efficient strategies for forward 
+                            thinking organisations. Over the years we have built our competence and 
+                            focused our expertise on creative design and application deployment.
+                            <br><br>
+                            Our business model is hinged on Process, Technology and People.
+                            We start every engagement with thorough research of your business 
+                            needs, customer demographics, and competitors. We have only one goal;
+                            to create real value for your business, helping you grow by 
+                            implementing necessary technology required to place your business in 
+                            front of the right people at the right time.
+                        </div>
+                        <div class="team">
+                            <p class="teamhead">Our team</p>
+                            <p>
+                                We are innovative and attentive. Our team is made up of driven 
+                                professionals with expertise in brand communication, web design, 
+                                digital marketing, creative design & web/mobile app development. 
+                                It is our collective ingenuity combined with a mix of creative and 
+                                technical skills that pushes us to deliver a compelling digital 
+                                experience.
+                            </p>
+                        </div>
+                        <div class="team">
+                            <p class="teamhead">The way we work</p>
+                            <p class="o">
+                                Our philosophy is to remain flexible.
+                                Our work process has been reinvented to deliver maximum value for
+                                your investment in a fast evolving digital world. 
+                                We execute all our engagements using project management 
+                                methodologies ensuring that we understand project objectives, 
+                                mitigate risk and deliver results.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- fourth section -->
+            <div class="thirdsection fourt">
+                <div class="whatWedo">
+                    <div class="hearder-what">
+                        <div class="what-text">
+                            <p>Courses</p>
+                        </div>
+                        <div class="what-link">
+                            <a href="#"><button>View All</button></a>
+                        </div>
+                    </div>
+                    <div class="what-body">
+                        <div class="boxes-what">
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/html.avif" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                       Front End Development HTML CSS JAVASCRIPT
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/angular.webp" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                        Front End Development With Angular Js
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/wordpress.avif" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                       CMS (Wordpress)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/mobile.avif" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                       Mobiel Development
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/php.avif" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                        Php & MySql
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/C.png" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                      C# & C Programing
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- fifth  section -->
+             <div class="thirdsection fifth">
+                <div class="whatWedo">
+                    <div class="hearder-what">
+                        <div class="what-text">
+                            <p>Projects</p>
+                        </div>
+                        <div class="what-link">
+                            <a href="#"><button>View All</button></a>
+                        </div>
+                    </div>
+                    <div class="what-body">
+                        <div class="boxes-what">
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/software development.jpg" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                       Front End Development HTML CSS JAVASCRIPT
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/software development.jpg" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                        Front End Development With Angular Js
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/software development.jpg" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                       CMS (Wordpress)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/software development.jpg" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                       Mobiel Development
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/software development.jpg" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                        Php & MySql
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="box-what">
+                                <div class="img-what">
+                                   <a href="#"> <img src="../img/software development.jpg" alt=""></a>
+                                </div>
+                                <div class="text-what">
+                                    <p class="texrheader-what">
+                                      C# & C Programing
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footerwidth">
+            <p>© 2023 Next Tech. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
+    
+<?php 
+// else{
+//     header("Location: index.php");
+//     exit();
+// }
